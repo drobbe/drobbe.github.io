@@ -32,6 +32,7 @@ $(document).ready(function(){
 
 	$('head').append(
 		'<link rel="stylesheet" type="text/css" media="screen" title="Default" href="library/style.css" />'+
+		'<link rel="stylesheet" type="text/css" media="screen" title="Default" href="library/animate.css" />'+
 		'<title>New Tab</title>'+
 		'<link rel="shortcut icon" href="library/favicon.png" type="image/png" />'
 	);
@@ -231,11 +232,16 @@ $(document).ready(function(){
 	$('#pages span').click(
 		function() {	
 			var page = $(this).html();
+			var beforePage = $('#pages span.active').html();
 			window.location.hash = page;
 			$('#pages span').removeClass('active');
 			$(this).addClass('active');
-			$('#container div').hide();
+			$('#container div').removeClass();
+			$('#container div:nth-child(' + beforePage + ')').addClass('animated fadeOutLeft');
+			$('#container div:nth-child(' + beforePage + ')').addClass('absolute');
+			$('#container div:nth-child(' + beforePage + ')').fadeOut();
 			$('#container div:nth-child(' + page + ')').fadeIn();
+			$('#container div:nth-child(' + page + ')').addClass('animated fadeInRight');
 		}
 	);
 
