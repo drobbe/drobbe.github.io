@@ -125,12 +125,15 @@ h1 {
 	
 }
 
-#container div {
+.urls div {
 	display: none;
-}
-.absolute {
 	position: absolute;
 }
+
+.urls{
+	min-height: 330px;
+}
+
 
 #container div:first-child {
 	display: block;

@@ -81,7 +81,7 @@ $(document).ready(function(){
 	Adds the main content blocks to the page
 */
 	$('body').append(
-		'<div id="container"></div>'+
+		'<div id="container" class="urls"></div>'+
 		'<p id="pages"></p>'+
 		'<form action="http://www.google.com/search" method="get">'+
 			//'<span class="changer" id="changer"> </span>'+
@@ -227,21 +227,26 @@ $(document).ready(function(){
 /**
 	When page link is
 	clicked
-*/
-
+*/	var timer;
+	var boleanTimer = true;
 	$('#pages span').click(
-		function() {	
+		function() {
+			if(boleanTimer === false){
+				return;
+			}
 			var page = $(this).html();
 			var beforePage = $('#pages span.active').html();
 			window.location.hash = page;
 			$('#pages span').removeClass('active');
 			$(this).addClass('active');
 			$('#container div').removeClass();
-			$('#container div:nth-child(' + beforePage + ')').addClass('animated fadeOutLeft');
-			$('#container div:nth-child(' + beforePage + ')').addClass('absolute');
-			$('#container div:nth-child(' + beforePage + ')').fadeOut();
-			$('#container div:nth-child(' + page + ')').fadeIn();
-			$('#container div:nth-child(' + page + ')').addClass('animated fadeInRight');
+			$('#container div:nth-child(' + beforePage + ')').addClass('animated slideOutRight');
+			$('#container div:nth-child(' + beforePage + ')').fadeOut(700);
+			$('#container div:nth-child(' + page + ')').fadeIn(700);
+			$('#container div:nth-child(' + page + ')').addClass('animated slideInLeft');
+			boleanTimer = false;
+			timer = setTimeout(function(){boleanTimer = true}, 700);
+			
 		}
 	);
 
