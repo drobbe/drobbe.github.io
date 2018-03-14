@@ -111,9 +111,9 @@ $(document).ready(function() {
         */
         if (html != "www.example.com") {
             if (url != "http://www.example.com") {
-                html = html + '<a href="' + url + '" style="background-image: url(thumbnails/' + img + '.png);"></a>';
+                html = html + '<a href="' + url + '</a>';
             } else if (url == "http://www.example.com") {
-                html = html + '<a href="' + "#" + '" style="background-image: url(thumbnails/' + "www.example.com" + '.png);"></a>';
+                html = html + '<a href="' + "#" + '>/a>';
             }
         }
     }
