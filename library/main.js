@@ -27,7 +27,7 @@ $(document).ready(function() {
     	Add the extra stuff to the <head>,
     	thus make index.html slightly cleaner
     */
-    $('head').append('<link rel="stylesheet" type="text/css" media="screen" title="Default" href="library/style.css" />' + '<link rel="stylesheet" type="text/css" media="screen" title="Default" href="library/animate.css" />' + '<title>New Tab</title>' + '<link rel="shortcut icon" href="library/favicon.png" type="image/png" />');
+    $('head').append('<link rel="stylesheet" type="text/css" media="screen" title="Default" href="library/animate.css" />' + '<title>New Tab</title>' + '<link rel="shortcut icon" href="library/favicon.png" type="image/png" />');
     /**
     	Get URLs from the document body * get time and hour
     */
