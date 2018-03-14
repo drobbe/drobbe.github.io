@@ -59,7 +59,7 @@ $(document).ready(function() {
     	Adds the main content blocks to the page
     */
     $('body').append('<div id="container" class="urls"></div>' + '<p id="pages"></p>' + 
-    	'<form action="http://www.google.com/search" method="get">' +
+    	'<form action="https://www.google.com/search" method="get">' +
         '<input type="text" name="q" value="" />' + '<button type="submit">Google</button>');
 
     $('body').append('<div id="container"></div>' + '<p id="pages"></p>' + 
