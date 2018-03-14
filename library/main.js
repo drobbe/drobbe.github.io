@@ -48,6 +48,9 @@ $(document).ready(function() {
     */
     $('body').html('<p id="bar"><span class="button" id="shown">Shuffle</span>' 
     	+ '<span class="button" id="each">  Router  </span>' + '<span class="button" id="random">Random</span></p>');
+    /*$('body').append('<canvas id="text" width="500" height="100"></canvas>');
+    $('body').append('<canvas id="stage" width="500" height="100"></canvas>');
+    init();
     /*
     	Imprimentdo la hora actual
     */
@@ -108,9 +111,9 @@ $(document).ready(function() {
         */
         if (html != "www.example.com") {
             if (url != "http://www.example.com") {
-                html = html + '<a href="' + url + '" style="background:red;"></a>';
+                html = html + '<a href="' + url + '" style="background-image: url(thumbnails/' + img + '.png);"></a>';
             } else if (url == "http://www.example.com") {
-                html = html + '<a href="' + "#" + '" style="background:red);"></a>';
+                html = html + '<a href="' + "#" + '" style="background-image: url(thumbnails/' + "www.example.com" + '.png);"></a>';
             }
         }
     }
