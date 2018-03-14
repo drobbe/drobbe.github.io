@@ -5,7 +5,6 @@
 
     function init() {
         initStages();
-        initText();
         initCircles();
         animate();
     }
@@ -23,17 +22,12 @@
         stage.canvas.height = window.innerHeight;
     }
 
-    function initText() {
-        text = new createjs.Text("t", "80px 'Source Sans Pro'", "#eee");
-        text.textAlign = 'center';
-        text.x = 300;
-    }
 
     function initCircles() {
         circles = [];
-        for(var i=0; i<250; i++) {
+        for(var i=0; i<10; i++) {
             var circle = new createjs.Shape();
-            var r = 7;
+            var r = 25;
             var x = window.innerWidth*Math.random();
             var y = window.innerHeight*Math.random();
             var color = colors[Math.floor(i%colors.length)];
