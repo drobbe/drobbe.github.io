@@ -48,9 +48,6 @@ $(document).ready(function() {
     */
     $('body').html('<p id="bar"><span class="button" id="shown">Shuffle</span>' 
     	+ '<span class="button" id="each">  Router  </span>' + '<span class="button" id="random">Random</span></p>');
-    /*$('body').append('<canvas id="text" width="500" height="100"></canvas>');
-    $('body').append('<canvas id="stage" width="500" height="100"></canvas>');
-    init();
     /*
     	Imprimentdo la hora actual
     */
@@ -175,13 +172,13 @@ $(document).ready(function() {
         $(this).addClass('active');
         $('#container div').removeClass();
         $('#container div:nth-child(' + beforePage + ')').addClass(animation.OutAnimation);
-        $('#container div:nth-child(' + beforePage + ')').fadeOut(700);
-        $('#container div:nth-child(' + page + ')').fadeIn(700);
+        $('#container div:nth-child(' + beforePage + ')').fadeOut(500);
+        $('#container div:nth-child(' + page + ')').fadeIn(500);
         $('#container div:nth-child(' + page + ')').addClass(animation.inAnimation);
         boleanTimer = false;
         timer = setTimeout(function() {
             boleanTimer = true
-        }, 700);
+        }, 500);
     });
     /**
     	Hook clicks from the #prev to
