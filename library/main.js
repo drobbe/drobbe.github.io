@@ -51,7 +51,7 @@ $(document).ready(function() {
     /*
     	Imprimentdo la hora actual
     */
-    $('body').append('<div id="date">' + (dayName[now.getDay()] +" "+now.getDay()+ " de " + monName[now.getMonth()] + " " + strTime));
+    $('body').append('<div id="date">' + (dayName[now.getDay()] +" "+now.getDate()+ " de " + monName[now.getMonth()] + " " + strTime));
     /**
     	Adds the main content blocks to the page
     */
