@@ -61,7 +61,7 @@ canvas {
     Shadows
 */
 
-a, #pages span {
+#pages span {
     -moz-box-shadow: inset 0 -1px 2px rgba(0, 0, 0, 0.6), 0 1px 0 rgba(255, 255, 255, 0.1);
     -webkit-box-shadow: inset 0 -1px 2px rgba(0, 0, 0, 0.6), 0 1px 0 rgba(255, 255, 255, 0.1);
     -khtml-box-shadow: inset 0 -1px 2px rgba(0, 0, 0, 0.6), 0 1px 0 rgba(255, 255, 255, 0.1);
@@ -71,7 +71,7 @@ a, #pages span {
     Rounded borders
 */
 
-a, #pages span {
+#pages span {
     -moz-border-radius: 8px;
     -webkit-border-radius: 8px;
     -khtml-border-radius: 8px;
@@ -117,6 +117,7 @@ h1 {
 */
 
 #container a {
+    border-radius: 4px;
     margin: 5px;
     width: 160px;
     height: 70px;
@@ -124,12 +125,17 @@ h1 {
     background-color: rgba(40, 40, 40, 0.5);
     background-repeat: no-repeat;
     background-position: 50% 50%;
+    box-shadow: 0px 7px 5px 0px rgba(0,0,0,0.8), inset 0px 1px 0px 0px rgba(255, 255, 255, 0.3);
 }
 #container a:hover {
-    -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 255, 255, 0.7);
-    -moz-box-shadow: 0px 0px 5px 1px rgba(0, 255, 255, 0.7);
-    box-shadow: 0px 0px 5px 1px rgba(0, 255, 255, 0.7);
     filter: none;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-name: pulse;
+    animation-name: pulse;
+
 }
 /**
     The page buttons
@@ -251,7 +257,7 @@ button {
     box-shadow: inset -1px 1px 0px 0px rgba(255, 255, 255, 0.1);
     color: cyan;
     font-size: 15px;
-    padding: 6px;
+    height: 36px;
     border-width: 1px;
     border-style: solid;
     border-color: transparent;
@@ -278,25 +284,58 @@ input {
     cursor: text;
     width: 450px;
     border-radius: 5px;
+    height: 34px;
+    padding-left: 8px;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 25%);
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.1);
     color: cyan;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 1);
     font-size: 14px;
-    padding: 8px;
-    border-width: 1px !important;
-    border-style: solid;
-    border-color: transparent;
+    border-width: 1px;
+    border:none;
 }
 input:hover {
     border: 1px #19F7FF solid;
     box-shadow: 0px 0px 5px #19F7FF;
-    -webkit-transition: all 200ms ease-in-out;
-    -moz-transition: all 200ms ease-in-out;
-    -ms-transition: all 200ms ease-in-out;
-    -o-transition: all 200ms ease-in-out;
-    transition: all 200ms ease-in-out;
 }
 input::-moz-selection {
     background-color: rgba(151, 161, 159, 0.6)!important;
+}
+
+@-webkit-keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.pulse {
+  -webkit-animation-name: pulse;
+  animation-name: pulse;
 }

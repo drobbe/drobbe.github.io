@@ -157,13 +157,13 @@ $(document).ready(function() {
         var beforePage = $('#pages span.active').html();
         if (page > beforePage) {
             animation = {
-                inAnimation: "animated slideInLeft",
-                OutAnimation: "animated slideOutRight"
+                inAnimation: "animated slideInRight",
+                OutAnimation: "animated slideOutLeft"
             };
         } else {
             animation = {
-                inAnimation: "animated slideInRight",
-                OutAnimation: "animated slideOutLeft"
+                inAnimation: "animated slideInLeft",
+                OutAnimation: "animated slideOutRight"
             };
         }
         console.log(animation);
