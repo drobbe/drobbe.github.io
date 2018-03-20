@@ -267,6 +267,7 @@ $(document).ready(function() {
     */
     $('body').click(scroll(0, 0));
 
+
     /*$.ajax({
 	  method: "GET",
 	  url: "https://api.openweathermap.org/data/2.5/weather?id=3646738&APPID=cd351cd4c23b5ea27db44d0b043203d6&units=metric",
