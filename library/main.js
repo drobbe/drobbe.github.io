@@ -172,13 +172,13 @@ $(document).ready(function() {
         $(this).addClass('active');
         $('#container div').removeClass();
         $('#container div:nth-child(' + beforePage + ')').addClass(animation.OutAnimation);
-        $('#container div:nth-child(' + beforePage + ')').fadeOut(500);
-        $('#container div:nth-child(' + page + ')').fadeIn(500);
+        $('#container div:nth-child(' + beforePage + ')').fadeOut(300);
+        $('#container div:nth-child(' + page + ')').fadeIn(300);
         $('#container div:nth-child(' + page + ')').addClass(animation.inAnimation);
         boleanTimer = false;
         timer = setTimeout(function() {
             boleanTimer = true
-        }, 500);
+        }, 300);
     });
     /**
     	Hook clicks from the #prev to
