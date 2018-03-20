@@ -83,7 +83,7 @@ canvas {
 
 h1 {
     text-align: center;
-    
+    margin-bottom: 5px;
     font-size: 5vw;
     max-width: 90vw;
     color: rgb(0, 255, 255);
@@ -95,7 +95,7 @@ h1 {
 */
 
 #container {
-    max-width: 680px;
+    max-width: 700px;
     position: relative;
     padding: 20px 0 0 0;
     margin: 0 auto;
@@ -118,14 +118,14 @@ h1 {
 
 #container a {
     border-radius: 4px;
-    margin: 5px;
+    margin: 3px;
     width: 160px;
     height: 70px;
     display: inline-block;
     background-color: rgba(40, 40, 40, 0.5);
     background-repeat: no-repeat;
     background-position: 50% 50%;
-    box-shadow: 0px 7px 5px 0px rgba(0,0,0,0.8), inset 0px 1px 0px 0px rgba(255, 255, 255, 0.3);
+    box-shadow: 0px 7px 5px 0px rgba(0, 0, 0, 0.8), inset 0px 1px 0px 0px rgba(255, 255, 255, 0.3);
 }
 #container a:hover {
     filter: none;
@@ -135,7 +135,6 @@ h1 {
     animation-fill-mode: both;
     -webkit-animation-name: pulse;
     animation-name: pulse;
-
 }
 /**
     The page buttons
@@ -291,7 +290,7 @@ input {
     color: cyan;
     font-size: 14px;
     border-width: 1px;
-    border:none;
+    border: none;
 }
 input:hover {
     border: 1px #19F7FF solid;
@@ -300,42 +299,35 @@ input:hover {
 input::-moz-selection {
     background-color: rgba(151, 161, 159, 0.6)!important;
 }
-
 @-webkit-keyframes pulse {
-  from {
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
-  }
-
-  50% {
-    -webkit-transform: scale3d(1.05, 1.05, 1.05);
-    transform: scale3d(1.05, 1.05, 1.05);
-  }
-
-  to {
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
-  }
+    from {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+    50% {
+        -webkit-transform: scale3d(1.05, 1.05, 1.05);
+        transform: scale3d(1.05, 1.05, 1.05);
+    }
+    to {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
 }
-
 @keyframes pulse {
-  from {
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
-  }
-
-  50% {
-    -webkit-transform: scale3d(1.05, 1.05, 1.05);
-    transform: scale3d(1.05, 1.05, 1.05);
-  }
-
-  to {
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
-  }
+    from {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+    50% {
+        -webkit-transform: scale3d(1.05, 1.05, 1.05);
+        transform: scale3d(1.05, 1.05, 1.05);
+    }
+    to {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
 }
-
 .pulse {
-  -webkit-animation-name: pulse;
-  animation-name: pulse;
+    -webkit-animation-name: pulse;
+    animation-name: pulse;
 }
