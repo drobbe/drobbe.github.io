@@ -166,6 +166,18 @@ $(document).ready(function() {
         $('#pages span:nth-child(' + window.location.hash.substring(1) + ')').click();
     }
 
+    $("a[href='#']").click(function() {
+        $('.lol').removeClass('animated fadeOutDown');
+        $('.lol').addClass('animated fadeInUp');
+        $('.lol').show(0);
+    });
+
+    $(".btn-menu").click(function() {
+        $('.lol').removeClass('animated fadeInUp');
+        $('.lol').addClass('animated fadeOutDown');
+        $('.lol').delay(2000).hide(0);
+    });
+   
     /*$.ajax({
 	  method: "GET",
 	  url: "https://api.openweathermap.org/data/2.5/weather?id=3646738&APPID=cd351cd4c23b5ea27db44d0b043203d6&units=metric",

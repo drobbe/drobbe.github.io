@@ -1520,11 +1520,17 @@
 @-webkit-keyframes fadeInUp {
   from {
     opacity: 0;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-timing-function: ease;
+    animation-timing-function: ease;
     -webkit-transform: translate3d(0, 100%, 0);
     transform: translate3d(0, 100%, 0);
   }
 
   to {
+    -webkit-animation-timing-function: ease;
+    animation-timing-function: ease;
     opacity: 1;
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
@@ -1611,10 +1617,16 @@
 @-webkit-keyframes fadeOutDown {
   from {
     opacity: 1;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-timing-function: ease;
+    animation-timing-function: ease;
   }
 
   to {
     opacity: 0;
+    -webkit-animation-timing-function: ease;
+    animation-timing-function: ease;
     -webkit-transform: translate3d(0, 100%, 0);
     transform: translate3d(0, 100%, 0);
   }
