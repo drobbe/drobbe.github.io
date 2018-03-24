@@ -246,9 +246,10 @@ form {
     display: block;
     -moz-user-select: none !important;
 }
-button {
+button, label {
+    margin-left: -100px;
     width: 100px;
-    border-radius: 0px 5px 5px 0px;
+    border-radius: 5px 5px;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.0) 0%, rgba(0, 0, 0, 0.45) 100%);
     -webkit-box-shadow: inset 0px 1px 2px 1px rgba(255, 255, 255, 0.6);
     -moz-box-shadow: inset 0px 1px 2px 1px rgba(230, 230, 230, 1);
@@ -260,14 +261,9 @@ button {
     border-style: solid;
     border-color: transparent;
 }
-form button:hover {
+form button:hover, .overlay button:hover, label:hover{
     border: 1px #19F7FF solid;
     box-shadow: 0px 0px 5px #19F7FF;
-    -webkit-transition: all 200ms ease-in-out;
-    -moz-transition: all 200ms ease-in-out;
-    -ms-transition: all 200ms ease-in-out;
-    -o-transition: all 200ms ease-in-out;
-    transition: all 200ms ease-in-out;
 }
 #date {
     font-family: robotothin;
@@ -277,19 +273,17 @@ form button:hover {
     text-shadow: 0px 0px 6px rgba(0, 255, 255, 0.3);
     margin: 0 auto;
 }
-input, label {
+input {
     position: static !important;
     cursor: text;
     width: 450px;
     border-radius: 5px;
-    height: 34px;
+    height: 36px;
     padding-left: 8px;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 25%);
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.1);
     color: cyan;
-    font-size: 14px;
-    border-width: 1px;
-    border: none;
+    border: solid 1px #0000;
 }
 input:hover {
     border: 1px #19F7FF solid;
@@ -330,44 +324,63 @@ input::-moz-selection {
     -webkit-animation-name: pulse;
     animation-name: pulse;
 }
-
-.lol{
+.overlay {
     width: 100%;
     height: 100%;
     position: absolute;
-    background:  #111 url(bg.png);
+    background: #111 url(bg.png);
     opacity: 1;
     z-index: 999;
     display: none;
     padding-top: 5vh;
 }
-
 .btn-menu {
     position: absolute;
-    top: -16px;
+    top: -8px;
     right: 20px;
     font-size: 46px;
     color: #0cbfbf;
 }
 .btn-menu:hover {
     text-shadow: 0px 0px 5px #19F7FF;
-      color: cyan;
+    color: cyan;
 }
-
 #fileElem {
-    width: 0.1px;
-    height: 0.1px;
+    width: 0px;
+    height: 0.5vh;
     opacity: 0;
     overflow: hidden;
     position: absolute;
     z-index: -1;
 }
-label{
-    display: inline-block;
-    height: 36px;
-    width: 200px;
-    text-align: left;
-
+label {
+    display: block;
+    height: initial;
+    padding: 9.5px 0px;
+    text-align: center;
+    margin: 0 auto;
 }
-
-
+.center-block {
+    display: block;
+    margin: 20px auto;
+}
+#preview {
+    min-width: 300px;
+    display: none;
+}
+.overlay-button {
+    margin-right: -105px;
+    margin-left: 0px;
+}
+.overlay-input{
+    padding-left: 108px;
+    margin: 20px auto;
+}
+.NewUrl{
+    max-width: 96vw;
+    margin: 0vw 2vw;
+    padding-bottom: 20px;
+}
+#upload{
+    display: none
+}

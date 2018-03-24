@@ -1,37 +1,51 @@
 /**
-	Released under MIT License
-	
-	Copyright (c) 2010 Jukka Svahn
-	<http://rahforum.biz>
+    Released under MIT License
+    
+    Copyright (c) 2010 Jukka Svahn
+    <http://rahforum.biz>
 
-	Permission is hereby granted, free of charge, to any person obtaining a copy
-	of this software and associated documentation files (the "Software"), to deal
-	in the Software without restriction, including without limitation the rights
-	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-	copies of the Software, and to permit persons to whom the Software is
-	furnished to do so, subject to the following conditions:
-	
-	The above copyright notice and this permission notice shall be included in
-	all copies or substantial portions of the Software.
-	
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-	THE SOFTWARE.
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+    
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+    
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.
 */
 $(document).ready(function() {
 
-    
+    var dayName = new Array("Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado")
+    var monName = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Nomviembre", "Diciembre")
+    var now = new Date
+    var hours = now.getHours();
+    var minutes = now.getMinutes();
+    var ampm = hours >= 12 ? 'pm' : 'am';
+    hours = hours % 12;
+    //hours es false si es 0
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    var strTime = hours + ':' + minutes + ' ' + ampm;
+    var time = (dayName[now.getDay()] + " " + now.getDate() + " de " + monName[now.getMonth()] + " " + strTime);
+
+    $('#date').html(time);
+
     /**
-    	Adds active state
+        Adds active state
     */
     $('#pages span:first-child').addClass('active');
     /**
-    	Hovering #prev and #next causes
-    	the prev/next page links to glow
+        Hovering #prev and #next causes
+        the prev/next page links to glow
     */
     $('#prev').hover(function() {
         $('#pages span.active').prev('#pages span').addClass('shine');
@@ -44,8 +58,8 @@ $(document).ready(function() {
         $('#pages span').removeClass('shine');
     });
     /**
-    	When page link is
-    	clicked
+        When page link is
+        clicked
     */
     var timer;
     var boleanTimer = true;
@@ -81,20 +95,20 @@ $(document).ready(function() {
         }, 300);
     });
     /**
-    	Hook clicks from the #prev to
-    	previous page link
+        Hook clicks from the #prev to
+        previous page link
     */
     $('#prev').click(function() {
         $('#pages span.active').prev('#pages span').click();
     });
     /**
-    	Hook click from the #next
+        Hook click from the #next
     */
     $('#next').click(function() {
         $('#pages span.active').next('#pages span').click();
     });
     /**
-    	Select random URL and redirect
+        Select random URL and redirect
     */
     $('#random').click(function() {
         var url = "0";
@@ -106,7 +120,7 @@ $(document).ready(function() {
         window.location = url;
     });
     /**
-    	Open Router direccion
+        Open Router direccion
     */
     $('#each').click(function() {
         if (confirm('Desea Acceder al router ?')) {
@@ -114,7 +128,7 @@ $(document).ready(function() {
         }
     });
     /*
-    	Open visible links
+        Open visible links
     */
     $('#shown').click(function() {
         var url = "0";
@@ -129,8 +143,8 @@ $(document).ready(function() {
     /*
 
 
-    	Bind arrows, and transfer it as
-    	a click to the page links
+        Bind arrows, and transfer it as
+        a click to the page links
     */
     $(document).keydown(function(event) {
         var goTo = '';
@@ -156,30 +170,25 @@ $(document).ready(function() {
     });
     /**
     /**
-    	If the page somehow opens, or ends up,
-    	in strange cordinates, reset the location
+        If the page somehow opens, or ends up,
+        in strange cordinates, reset the location
     */
     $('body').click(scroll(0, 0));
-
-
-     if (window.location.hash) {
+    if (window.location.hash) {
         $('#pages span:nth-child(' + window.location.hash.substring(1) + ')').click();
     }
-
     $("a[href='#']").click(function() {
-        $('.lol').removeClass('animated fadeOutDown');
-        $('.lol').addClass('animated fadeInUp');
-        $('.lol').show(0);
+        $('.overlay').removeClass('animated fadeOutDown');
+        $('.overlay').addClass('animated fadeInUp');
+        $('.overlay').show(0);
     });
-
     $(".btn-menu").click(function() {
-        $('.lol').removeClass('animated fadeInUp');
-        $('.lol').addClass('animated fadeOutDown');
-        $('.lol').delay(2000).hide(0);
+        $('.overlay').removeClass('animated fadeInUp');
+        $('.overlay').addClass('animated fadeOutDown');
+        $('.overlay').delay(2000).hide(0);
     });
-   
     /*$.ajax({
-	  method: "GET",
-	  url: "https://api.openweathermap.org/data/2.5/weather?id=3646738&APPID=cd351cd4c23b5ea27db44d0b043203d6&units=metric",
-	});*/
+      method: "GET",
+      url: "https://api.openweathermap.org/data/2.5/weather?id=3646738&APPID=cd351cd4c23b5ea27db44d0b043203d6&units=metric",
+    });*/
 });

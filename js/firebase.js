@@ -39,14 +39,26 @@ $(document).ready(function() {
         //fileName = (this.files[0].name.split('.')[0]);
         // Create a storage reference from our storage service
         ref = storageRef.child('img/' + fileName);
+        readURL(this);
     });
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            if( $('#url').val() != '' && $('#name').val() != '')
+            reader.onload = function(e) {
+                $('#preview').attr('src', e.target.result);
+                $('#preview').fadeIn(500);
+                $('#upload').fadeIn(500);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
 });
 
 function uploadFile() {
     var uploadTask = ref.put(file);
-    uploadTask.on('state_changed', function(snapshot){
-    }, function(error) {
-
+    uploadTask.on('state_changed', function(snapshot) {}, function(error) {
         // A full list of error codes is available at
         // https://firebase.google.com/docs/storage/web/handle-errors
         switch (error.code) {
