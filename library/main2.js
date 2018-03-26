@@ -86,7 +86,6 @@ $(document).ready(function() {
         $('#container div').removeClass();
         $('#container div:nth-child(' + beforePage + ')').addClass(animation.OutAnimation);
         $('#container div:nth-child(' + beforePage + ')').fadeOut(300);
-        console.log($('#container div:nth-child(' + beforePage + ')'));
         $('#container div:nth-child(' + page + ')').fadeIn(300);
         $('#container div:nth-child(' + page + ')').addClass(animation.inAnimation);
         boleanTimer = false;
@@ -177,11 +176,19 @@ $(document).ready(function() {
     if (window.location.hash) {
         $('#pages span:nth-child(' + window.location.hash.substring(1) + ')').click();
     }
+    /*
+        Menu overlay show
+    */
     $("a[href='#']").click(function() {
+        category = ($(this).parent("div").attr('data-category'));
         $('.overlay').removeClass('animated fadeOutDown');
         $('.overlay').addClass('animated fadeInUp');
         $('.overlay').show(0);
+        $('#category').val(category);
     });
+    /*
+        Menu overlay hide
+    */
     $(".btn-menu").click(function() {
         $('.overlay').removeClass('animated fadeInUp');
         $('.overlay').addClass('animated fadeOutDown');

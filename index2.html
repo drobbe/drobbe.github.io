@@ -7,53 +7,66 @@
       </meta>
       <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
       </link>
-      <script src="library/jquery.js" type="text/javascript"></script>
-      <script src="library/main2.js" type="text/javascript"></script>
+      <script src="library/jquery.js" type="text/javascript">
+      </script>
+      <script src="library/main2.js" type="text/javascript">
+      </script>
       <link href="library/style.css" media="all" onload="if(media!='all')media='all'" rel="stylesheet">
       </link>
-      <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js">
+      </script>
       <link href="library/animate.css" media="screen" rel="stylesheet" title="Default" type="text/css">
-      <link href="library/favicon.png" rel="shortcut icon" type="image/png"/>
+         <link href="library/favicon.png" rel="shortcut icon" type="image/png"/>
       </link>
-      <script src="js/firebase.js" type="text/javascript"></script>
+      <script src="js/firebase.js" type="text/javascript">
+      </script>
    </head>
    <body>
       <div class="overlay">
          <a class="btn-menu btn-x-main" href="javascript:void(0)">
-         ×
+            ×
          </a>
          <h1 class="NewUrl">
             Agregar Nuevo Sitio
-          </h1>
-         <input accept="image/*" id="fileElem" type="file" class="center-block">
-         <button class="overlay-button"> Nombre </button> <input id="name" type="text" class="overlay-input" value=""/>  <br>
-         <button class="overlay-button"> Url </button> <input id="url" type="text" class="overlay-input" value=""/> 
-         <label for="fileElem" class="center-block">
-         Cargar Foto
-         </label>
-         </input>
+         </h1>
+         <input accept="image/*" class="center-block" id="fileElem" type="file">
+            <button class="overlay-button">
+               Nombre
+            </button>
+            <input class="overlay-input" id="name" type="text" value=""/>
+            <br>
+           <button class="overlay-button">
+              Url
+           </button>
+           <input class="overlay-input" id="url" type="text" value=""/>
+           <label class="center-block" for="fileElem">
+              Cargar Foto
+           </label>
+         <input type="hidden" id="category" name="category" value="">   
          <img alt="" class="center-block" id="preview" src="#"/>
-         <span class="center-block">Es Recomendable que la resolución sea 160x70</span>
-         <button class="center-block" onclick="uploadFile()" type="button" id="upload">
-         Subir ↑
+         <span class="center-block">
+            Es Recomendable que la resolución sea 160x70
+         </span>
+         <button class="center-block" id="upload" onclick="uploadFile()" type="button">
+            Subir ↑
          </button>
       </div>
       <p id="bar">
          <span class="button" id="shown">
-         Shuffle
+            Shuffle
          </span>
          <span class="button" id="each">
-         Router
+            Router
          </span>
          <span class="button" id="random">
-         Random
+            Random
          </span>
       </p>
       <div id="date">
          Martes 20 de Marzo 9:25 am
       </div>
       <div class="urls" id="container">
-         <div class="animated slideOutRight slideInLeft" style="">
+         <div class="" data-category="Work">
             <h1>
                Working
             </h1>
@@ -82,7 +95,7 @@
             <a href="#" style="background-image: url(thumbnails/www.example.com.png);">
             </a>
          </div>
-         <div class="">
+         <div class="" data-category="Social">
             <h1>
                Social & Others
             </h1>
@@ -111,7 +124,7 @@
             <a href="#" style="background-image: url(thumbnails/www.example.com.png);">
             </a>
          </div>
-         <div class="">
+         <div class="" data-category="Games">
             <h1>
                PoE & Games
             </h1>
@@ -140,7 +153,7 @@
             <a href="#" style="background-image: url(thumbnails/www.example.com.png);">
             </a>
          </div>
-         <div class="">
+         <div class="" data-category="Anime">
             <h1>
                Anime & Manga
             </h1>
@@ -169,7 +182,7 @@
             <a href="#" style="background-image: url(thumbnails/www.example.com.png);">
             </a>
          </div>
-         <div class="">
+         <div class="" data-category="Images">
             <h1>
                Wall & Imagenes
             </h1>
@@ -204,21 +217,21 @@
          </span>
       </div>
       <p id="pages">
-         <span class="active">1</span><span>2</span><span>3</span><span>4</span><span>5</span> </p>
+         <span class="active">1</span><span>2</span><span>3</span><span>4</span><span>5</span></p>
       <form action="https://www.google.com/search" method="get">
          <input name="q" type="text" value="">
-         <button type="submit">
-         Google
-         </button>
+            <button type="submit">
+               Google
+            </button>
          </input>
       </form>
       <div id="container">
       </div>
       <form action="https://www.youtube.com/results?" method="get">
          <input name="search_query" type="text" value="">
-         <button type="submit">
-         Youtube
-         </button>
+            <button type="submit">
+               Youtube
+            </button>
          </input>
       </form>
    </body>
