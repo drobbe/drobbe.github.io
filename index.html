@@ -1,171 +1,96 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet"> 
-	<script type="text/javascript" src="library/jquery.js"></script>
-	<script type="text/javascript" src="library/main.js"></script>
-	<link rel="stylesheet" href="library/style.css" media="none" onload="if(media!='all')media='all'">
-	<noscript><link rel="stylesheet" href="css.css"></noscript>
-	<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
-	<script>
-	  // Initialize Firebase
-	   // Set the configuration for your app
-    // TODO: Replace with your project's config object
-    var config = {
-    apiKey: "AIzaSyDXIkU2-PoqMsmP3LN_nqt328gY25gfxvs",
-    authDomain: "new-tab-1835f.firebaseapp.com",
-    databaseURL: "https://new-tab-1835f.firebaseio.com",
-    storageBucket: "new-tab-1835f.appspot.com"
-    };
-    firebase.initializeApp(config);
-
-    // Get a reference to the database service
-    var database = firebase.database();
-    writeUserData(2,"pedro2","edgar2d@hoami.com","cu2lo.png");
-
-function writeUserData(userId, name, email, imageUrl) {
-  firebase.database().ref('users/' + userId).set({
-    username: name,
-    email: email,
-    profile_picture : imageUrl
-  });
-}
-
-firebase.database().ref('/users/').once('value').then(function(snapshot) {
-  console.log(snapshot.val());
-  // ...
-});
-
-    console.log(username);
-	</script>
-
-</head>
-<body>  
-
-
-<!--
-	The URLs go below this comment block
-	in the following format:
-
-Heading Text here
-http://www.example.com
-http://www.example.net
-http://www.example.tv
-http://www.example.biz
-http://www.example.org
-http://www.example2.com
-http://example.com/foo/bar
-
-Second  heading here
-http://www.example.com
-http://www.example.com
-
-	The headings will be used as separators, and every heading will start a new
-	page. Every line that isn't an URL (start with http://), will be treated as
-	a heading.
-
-	Website Thumbnails should be placed to the "thumbnails" directory which you
-	will find from the same directory as this file.
-
-	The thumbnails should be named according the domain
-	name. For example if you have URL like "http://gocom.deviantart.com/",
-	the thumbnail would be named as "gocom.deviantart.com.png" (with out the quotes).
-	
-	So, for instance, thumbnails for following URLs would be:
-	
-	http://wwww.example.com/path/to/something => www.example.com.png
-	http://example.net => example.net.png
-	
-	Below are the example links bundled with the default package. You can replace
-	defaults with your own.
--->
-
-Working
-
-https://617716250198.signin.aws.amazon.com/console
-https://www.evernote.com
-http://localhost:8888/backend/web/site/login
-https://trello.com
-http://www.example.com
-http://www.example.com
-http://www.example.com
-http://www.example.com
-http://www.example.com
-http://www.example.com
-http://www.example.com
-http://www.example.com
-
-Social & Others
-
-https://www.facebook.com/
-http://www.taringa.net/comunidades/mis-comunidades/
-https://outlook.live.com/owa/
-https://soundcloud.com/
-http://drobbe.imgur.com/all/
-https://www.mercantilbanco.com/mercprod/index.html
-http://www.bancodevenezuela.com/
-http://www.9gag.com/
-https://www.provincial.com/
-http://www.example.com
-http://www.example.com
-http://www.example.com
-
-PoE & Games
-
-http://www.pathofexile.com/
-https://www.reddit.com/r/pathofexile/
-http://currency.poe.trade/
-http://poe.trade/
-http://www.exilemods.com/
-http://agar.io/
-http://www.example.com
-http://www.example.com
-http://www.example.com
-http://www.example.com
-http://www.example.com
-http://www.example.com
-
-
-Anime & Manga
-
-http://animeflv.net/
-http://myanimelist.net/panel.php
-http://es.ninemanga.com
-http://www.tumangaonline.com/
-http://foro.unionfansub.com/
-http://www.webtoons.com/en/fantasy/tower-of-god/list?title_no=95
-http://www.example.com
-http://www.example.com
-http://www.example.com
-http://www.example.com
-http://www.example.com
-http://www.example.com
-
-Wall & Imagenes
-
-http://boards.4chan.org/w/
-http://www.deviantart.com/browse/all/customization/wallpaper/
-https://konachan.com/post/popular_recent
-https://interfacelift.com/wallpaper/downloads/date/any/
-http://alpha.wallhaven.cc/
-http://gallery.minitokyo.net/wallpapers?time=1&display=extensive
-http://www.zerochan.net/?s=fav&t=1
-https://danbooru.donmai.us/explore/posts/popular
-http://www.example.com
-http://www.example.com
-http://www.example.com
-http://www.example.com
-
-
-
-
-
-
-
-
-<!--
-	/URLs end here
--->
-</body>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <title>
+         New Tab
+      </title>
+      <meta content="text/html; charset=utf-8" http-equiv="content-type">
+      </meta>
+      <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+      </link>
+      <script src="library/jquery.js" type="text/javascript">
+      </script>
+      <script src="library/main2.js" type="text/javascript">
+      </script>
+      <link href="library/style.css" media="all" onload="if(media!='all')media='all'" rel="stylesheet">
+      </link>
+      <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js">
+      </script>
+      <link href="library/animate.css" media="screen" rel="stylesheet" title="Default" type="text/css">
+         <link href="library/favicon.png" rel="shortcut icon" type="image/png"/>
+      </link>
+      <script src="js/firebase.js" type="text/javascript">
+      </script>
+   </head>
+   <body>
+      <div class="overlay">
+         <a class="btn-menu btn-x-main" href="javascript:void(0)">
+            ×
+         </a>
+         <h1 class="NewUrl">
+            Agregar Nuevo Sitio
+         </h1>
+         <input accept="image/*" class="center-block" id="fileElem" type="file">
+            <button class="overlay-button">
+               Nombre
+            </button>
+            <input class="overlay-input" id="name" type="text" value=""/>
+            <br>
+           <button class="overlay-button">
+              Url
+           </button>
+           <input class="overlay-input" id="url" type="text" value=""/>
+           <label class="center-block" for="fileElem">
+              Cargar Foto
+           </label>
+         <input type="hidden" id="category" name="category" value="">   
+         <img alt="" class="center-block" id="preview" src="#"/>
+         <span class="center-block">
+            Es Recomendable que la resolución sea 160x70
+         </span>
+         <button class="center-block" id="upload" onclick="uploadFile()" type="button">
+            Subir ↑
+         </button>
+      </div>
+      <p id="bar">
+         <span class="button" id="shown">
+            Shuffle
+         </span>
+         <span class="button" id="each">
+            Router
+         </span>
+         <span class="button" id="random">
+            Random
+         </span>
+      </p>
+      <div id="date">
+         Martes 20 de Marzo 9:25 am
+      </div>
+      <div class="urls" id="container">
+         
+         
+      </div>
+      <p id="pages">
+         <span class="active">1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+      </p>
+      <form action="https://www.google.com/search" method="get">
+         <input name="q" type="text" value="">
+            <button type="submit">
+               Google
+            </button>
+         </input>
+      </form>
+      <div id="container">
+      </div>
+      <form action="https://www.youtube.com/results?" method="get">
+         <input name="search_query" type="text" value="">
+            <button type="submit">
+               Youtube
+            </button>
+         </input>
+      </form>
+      <span id="prev">
+      </span>
+      <span id="next">
+      </span>
+   </body>
 </html>
