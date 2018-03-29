@@ -183,15 +183,17 @@ $(document).ready(function() {
         $('.overlay').delay(2000).hide(0);
     });
 
-        function test(la){
+        
+    $(document).keyup(function(e) {
+        focusedInput = $('input').is(":focus");
+        var key = e.keyCode || e.charCode;
+            if ((key >= 48 && key <= 57 || key >= 96 && key <= 105) && focusedInput===false) {
+                key = key <=57 ? key- 48 : key - 96 ;
+                $('#pages span:nth-child(' + key + ')').click();
+        }
+    });
 
-        category = (la).parent("div").attr('data-category');
-        $('.overlay').removeClass('animated fadeOutDown');
-        $('.overlay').addClass('animated fadeInUp');
-        $('.overlay').show(0);
-        $('#category').val(category);
- 
-    }
+
     /*$.ajax({
       method: "GET",
       url: "https://api.openweathermap.org/data/2.5/weather?id=3646738&APPID=cd351cd4c23b5ea27db44d0b043203d6&units=metric",
