@@ -14,34 +14,32 @@ var database = firebase.database();
 var storage = firebase.storage();
 // Create a root reference
 var storageRef = firebase.storage().ref();
-
 var ref = null;
-
 var file = null // use the Blob or File API
-
-//writeNewUrl("Slack", "https://shareitydeveloptment.slack.com");
-
-function writeNewUrl(name, url, category, background) {
-    var response = firebase.database().ref('/link/'+category+'/' + name).set({
-        name: name,
-        url: url,
-        background: background,
-    });
-    console.log(response);
-    response.then(() => {
-        alert("todo bien");
-        console.log('Se ha guardado con exitos')
-    })
-    response.catch((err) => {
-        console.log('Something went wrong check the error ', err)
-    })
-}
-
-firebase.database().ref('/link/').once('value').then(function(snapshot) {
-    //console.log(snapshot.val());
-    // ...
+firebase.database().ref('link/').once('value').then(function(snapshot) {
+    json = snapshot.val();
+    length = (Object.keys(json).length);
+    links = Object.values(json);
+    titles = Object.keys(json);
+    html = '';
+    for (var i = length - 1; i >= 0; i--) {
+        html += '<div class="" data-category="' + titles[i] + '"> <h1> ' + titles[i] + ' </h1> ';
+        linkData = Object.values(links[i]);
+        for (var j = 0; j < 12; j++) {
+            if (linkData[j] === undefined) {
+                html += '<a href="#" style="background-image: url(thumbnails/www.example.com.png);" onClick="overlayMenu(this)"></a>';
+            } else {
+                console.log(linkData[j].background);
+                html += '<a href="' + linkData[j].url + '" style="background-image: url( ' + linkData[j].background + ');"></a>';
+            }
+        }
+        html += '</div>';
+    }
+    $('#container').append(html);
+    if (window.location.hash) {
+        $('#pages span:nth-child(' + window.location.hash.substring(1) + ')').click();
+    }
 });
-
 $(document).ready(function() {
     // Detect file element
     $("#fileElem").change(function() {
@@ -70,9 +68,9 @@ $(document).ready(function() {
 function uploadFile() {
     var uploadTask = ref.put(file);
     name = $('#name').val();
-    url  = $('#url').val();
-    category  = $('#category').val();
-    if(name != '' && url != ''){
+    url = $('#url').val();
+    category = $('#category').val();
+    if (name != '' && url != '') {
         uploadTask.on('state_changed', function(snapshot) {}, function(error) {
             // A full list of error codes is available at
             // https://firebase.google.com/docs/storage/web/handle-errors
@@ -92,5 +90,28 @@ function uploadFile() {
             writeNewUrl(name, url, category, background);
         });
     }
+}
 
+function writeNewUrl(name, url, category, background) {
+    var response = firebase.database().ref('/link/' + category + '/' + name).set({
+        name: name,
+        url: url,
+        background: background,
+    });
+    console.log(response);
+    response.then(() => {
+        alert("todo bien");
+        console.log('Se ha guardado con exitos')
+    })
+    response.catch((err) => {
+        console.log('Something went wrong check the error ', err)
+    })
+}
+/* Menu overlay show */
+function overlayMenu(object) {
+    category = $(object).parent("div").attr('data-category');
+    $('.overlay').removeClass('animated fadeOutDown');
+    $('.overlay').addClass('animated fadeInUp');
+    $('.overlay').show(0);
+    $('#category').val(category);
 }

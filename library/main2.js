@@ -173,19 +173,7 @@ $(document).ready(function() {
         in strange cordinates, reset the location
     */
     $('body').click(scroll(0, 0));
-    if (window.location.hash) {
-        $('#pages span:nth-child(' + window.location.hash.substring(1) + ')').click();
-    }
-    /*
-        Menu overlay show
-    */
-    $("a[href='#']").click(function() {
-        category = ($(this).parent("div").attr('data-category'));
-        $('.overlay').removeClass('animated fadeOutDown');
-        $('.overlay').addClass('animated fadeInUp');
-        $('.overlay').show(0);
-        $('#category').val(category);
-    });
+
     /*
         Menu overlay hide
     */
@@ -194,6 +182,16 @@ $(document).ready(function() {
         $('.overlay').addClass('animated fadeOutDown');
         $('.overlay').delay(2000).hide(0);
     });
+
+        function test(la){
+
+        category = (la).parent("div").attr('data-category');
+        $('.overlay').removeClass('animated fadeOutDown');
+        $('.overlay').addClass('animated fadeInUp');
+        $('.overlay').show(0);
+        $('#category').val(category);
+ 
+    }
     /*$.ajax({
       method: "GET",
       url: "https://api.openweathermap.org/data/2.5/weather?id=3646738&APPID=cd351cd4c23b5ea27db44d0b043203d6&units=metric",
