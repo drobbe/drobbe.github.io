@@ -39,7 +39,7 @@ function loadUrls(json) {
         }
         html += '</div>';
     }
-    $('#container')..empty();
+    $('#container').empty();
     
     $('#container').append(html);
     if (window.location.hash) {
