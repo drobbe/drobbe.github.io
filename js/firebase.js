@@ -40,7 +40,6 @@ function loadUrls(json) {
         html += '</div>';
     }
     $('#container').empty();
-    
     $('#container').append(html);
     if (window.location.hash) {
         $('#pages span:nth-child(' + window.location.hash.substring(1) + ')').click();
@@ -54,7 +53,7 @@ firebase.database().ref('link/').once('value').then(function(snapshot) {
     } else {
         console.log(false);
         localStorage.setItem('link', JSON.stringify(json));
-       // loadUrls(json);
+        loadUrls(json);
     }
 });
 
