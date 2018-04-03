@@ -16,8 +16,13 @@ var storage = firebase.storage();
 var storageRef = firebase.storage().ref();
 var ref = null;
 var file = null // use the Blob or File API
-firebase.database().ref('link/').once('value').then(function(snapshot) {
-    json = snapshot.val();
+// Retrieve the object from storage
+var retrievedObject = localStorage.getItem('link');
+var local = (JSON.parse(retrievedObject));
+if (local != null) loadUrls(local);
+
+function loadUrls(json) {
+    console.log((json));
     length = (Object.keys(json).length);
     links = Object.values(json);
     titles = Object.keys(json);
@@ -29,17 +34,30 @@ firebase.database().ref('link/').once('value').then(function(snapshot) {
             if (linkData[j] === undefined) {
                 html += '<a href="#" style="background-image: url(thumbnails/www.example.com.png);" onClick="overlayMenu(this)"></a>';
             } else {
-                console.log(linkData[j].background);
                 html += '<a href="' + linkData[j].url + '" style="background-image: url( ' + linkData[j].background + ');"></a>';
             }
         }
         html += '</div>';
     }
+    $('#container')..empty();
+    
     $('#container').append(html);
     if (window.location.hash) {
         $('#pages span:nth-child(' + window.location.hash.substring(1) + ')').click();
     }
+}
+
+firebase.database().ref('link/').once('value').then(function(snapshot) {
+    json = snapshot.val();
+    if (JSON.stringify(json) === JSON.stringify(local)) {
+        console.log(true);
+    } else {
+        console.log(false);
+        localStorage.setItem('link', JSON.stringify(json));
+       // loadUrls(json);
+    }
 });
+
 $(document).ready(function() {
     // Detect file element
     $("#fileElem").change(function() {
