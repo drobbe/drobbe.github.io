@@ -64,6 +64,7 @@ $(document).ready(function() {
     var timer;
     var boleanTimer = true;
     $('#pages span').click(function() {
+        if ($(this).hasClass('active')) {return false}
         if (boleanTimer === false) {
             return;
         }
@@ -82,7 +83,7 @@ $(document).ready(function() {
         }
         $('#pages span').removeClass('active');
         $(this).addClass('active');
-        window.location.hash = decodeURI(page);
+        window.location.hash = (page);
         $('#container div').removeClass();
         $('#container div:nth-child(' + beforePage + ')').addClass(animation.OutAnimation);
         $('#container div:nth-child(' + beforePage + ')').fadeOut(300);
