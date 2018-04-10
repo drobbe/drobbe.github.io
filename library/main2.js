@@ -49,7 +49,7 @@ $(document).ready(function() {
     */
     $('#prev').hover(function() {
         $('#pages span.active').prev('#pages span').addClass('shine');
-    }, function() {
+    }, function() { 
         $('#pages span').removeClass('shine');
     });
     $('#next').hover(function() {

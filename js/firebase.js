@@ -19,8 +19,6 @@ var file = null // use the Blob or File API
 // Retrieve the object from storage
 var link = localStorage.getItem('link');
 var local = (JSON.parse(link));
-
-
 firebase.database().ref('link/').once('value').then(function(snapshot) {
     json = snapshot.val();
     if (JSON.stringify(json) === JSON.stringify(local)) {
@@ -32,35 +30,33 @@ firebase.database().ref('link/').once('value').then(function(snapshot) {
     }
 });
 
+function loadUrls(json) {
+    length = (Object.keys(json).length);
+    links = Object.values(json);
+    titles = Object.keys(json);
+    html = '';
+    for (var i = length - 1; i >= 0; i--) {
+        html += '<div class="" data-category="' + titles[i] + '"> <h1> ' + titles[i] + ' </h1> ';
+        linkData = Object.values(links[i]);
+        for (var j = 0; j < 12; j++) {
+            if (linkData[j] === undefined) {
+                html += '<a href="#" style="background-image: url(thumbnails/www.example.com.png);" onClick="overlayMenu(this)"></a>';
+            } else {
+                html += '<a href="' + linkData[j].url + '" style="background-image: url( ' + linkData[j].background + ');"></a>';
+            }
+        }
+        html += '</div>';
+    }
+    $('#container').empty();
+    $('#container').append(html);
+    /*if have a # in url click the correct span*/
+    if (window.location.hash) {
+        $('#pages span:nth-child(' + window.location.hash.substring(1) + ')').click();
+    }
+}
+
 $(document).ready(function() {
     if (local != null) loadUrls(local);
-
-    function loadUrls(json) {
-        length = (Object.keys(json).length);
-        links = Object.values(json);
-        titles = Object.keys(json);
-        html = '';
-        for (var i = length - 1; i >= 0; i--) {
-            html += '<div class="" data-category="' + titles[i] + '"> <h1> ' + titles[i] + ' </h1> ';
-            linkData = Object.values(links[i]);
-            for (var j = 0; j < 12; j++) {
-                if (linkData[j] === undefined) {
-                    html += '<a href="#" style="background-image: url(thumbnails/www.example.com.png);" onClick="overlayMenu(this)"></a>';
-                } else {
-                    html += '<a href="' + linkData[j].url + '" style="background-image: url( ' + linkData[j].background + ');"></a>';
-                }
-            }
-            html += '</div>';
-        }
-        $('#container').empty();
-        $('#container').append(html);
-        /*if have a # in url click the correct span*/
-
-        if (window.location.hash) {
-            $('#pages span:nth-child(' + window.location.hash.substring(1) + ')').click();
-        }
-    }
-    
     // Detect file element
     $("#fileElem").change(function() {
         // will log a FileList object, view gifs below
@@ -83,7 +79,6 @@ $(document).ready(function() {
             reader.readAsDataURL(input.files[0]);
         }
     }
-
 });
 
 function uploadFile() {
