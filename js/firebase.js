@@ -40,9 +40,9 @@ function loadUrls(json) {
         linkData = Object.values(links[i]);
         for (var j = 0; j < 12; j++) {
             if (linkData[j] === undefined) {
-                html += '<a href="#" style="background-image: url(thumbnails/www.example.com.png);" onClick="overlayMenu(this)"></a>';
+                html += '<a href="#" style="background-image: url(thumbnails/www.example.com.png);" onClick="overlayMenu(this)"> <div class="thumb-info" style="position: absolute;bottom: 0px;text-align: center; color:red; right:0"> <i class="demo-icon icon-trash-empty">&#xe800;</i> </div> </a>';
             } else {
-                html += '<a href="' + linkData[j].url + '" style="background-image: url( ' + linkData[j].background + ');"></a>';
+                html += '<a href="' + linkData[j].url + '" style="background-image: url( ' + linkData[j].background + ');"> <div class="thumb-info" style="position: absolute;bottom: 0px;text-align: center; color:red; right:0"><span>3234 x 1819</span></div> </a>';
             }
         }
         html += '</div>';
