@@ -143,16 +143,40 @@
   from {
     -webkit-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1);
+    z-index: 3;
   }
 
   100% {
     -webkit-transform: scale3d(1.05, 1.05, 1.05);
     transform: scale3d(1.05, 1.05, 1.05);
+    z-index: 4;
   }
-
 }
 
+
 .pulse {
+  -webkit-animation-name: pulse;
+  animation-name: pulse;
+}
+
+@keyframes pulseOut {
+  from {
+        -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05);
+    z-index: 4;-webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+    z-index: 3;
+  }
+
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+    z-index: 3;
+  }
+}
+
+
+.pulseOut {
   -webkit-animation-name: pulse;
   animation-name: pulse;
 }
@@ -2857,7 +2881,6 @@
 
 @-webkit-keyframes zoomIn {
   from {
-    opacity: 0;
     -webkit-transform: scale3d(0.3, 0.3, 0.3);
     transform: scale3d(0.3, 0.3, 0.3);
   }
@@ -2869,7 +2892,6 @@
 
 @keyframes zoomIn {
   from {
-    opacity: 0;
     -webkit-transform: scale3d(0.3, 0.3, 0.3);
     transform: scale3d(0.3, 0.3, 0.3);
   }
@@ -3050,7 +3072,6 @@
 
 @-webkit-keyframes zoomOut {
   from {
-    opacity: 1;
   }
 
   50% {
