@@ -84,11 +84,12 @@ $(document).ready(function() {
         $('#pages span').removeClass('active');
         $(this).addClass('active');
         window.location.hash = (page);
-        $('#container div').removeClass();
-        $('#container div:nth-child(' + beforePage + ')').addClass(animation.OutAnimation);
-        $('#container div:nth-child(' + beforePage + ')').fadeOut(300);
-        $('#container div:nth-child(' + page + ')').fadeIn(300);
-        $('#container div:nth-child(' + page + ')').addClass(animation.inAnimation);
+
+        $('#container div.hola').removeClass('slideInRight slideOutLeft slideInLeft slideOutRight');
+        $('#container div.hola:nth-child(' + beforePage + ')').addClass(animation.OutAnimation);
+        $('#container div.hola:nth-child(' + beforePage + ')').fadeOut(300);
+        $('#container div.hola:nth-child(' + page + ')').fadeIn(300);
+        $('#container div.hola:nth-child(' + page + ')').addClass(animation.inAnimation);
         boleanTimer = false;
         timer = setTimeout(function() {
             boleanTimer = true
@@ -175,16 +176,10 @@ $(document).ready(function() {
     */
     $('body').click(scroll(0, 0));
 
-    /*
-        Menu overlay hide
-    */
-    $(".btn-menu").click(function() {
-        $('.overlay').removeClass('animated fadeInUp');
-        $('.overlay').addClass('animated fadeOutDown');
-        $('.overlay').delay(2000).hide(0);
-    });
 
-        
+    /*
+        Moving trought slides with numbers of keyboards
+    */    
     $(document).keyup(function(e) {
         focusedInput = $('input').is(":focus");
         var key = e.keyCode || e.charCode;
@@ -193,6 +188,11 @@ $(document).ready(function() {
                 $('#pages span:nth-child(' + key + ')').click();
         }
     });
+
+    $('.thumb-info2').click(function() {
+        alert(32);
+    });
+
 
 
     /*$.ajax({

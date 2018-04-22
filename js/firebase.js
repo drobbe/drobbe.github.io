@@ -36,13 +36,16 @@ function loadUrls(json) {
     titles = Object.keys(json);
     html = '';
     for (var i = length - 1; i >= 0; i--) {
-        html += '<div class="" data-category="' + titles[i] + '"> <h1> ' + titles[i] + ' </h1> ';
+        html += '<div class="hola" data-category="' + titles[i] + '"> <h1> ' + titles[i] + ' </h1> ';
         linkData = Object.values(links[i]);
+        closeButton = '<div class="thumb-info2"> <i class="fas fa-trash"></i> </div>';
+        //infobanner = '<div class="thumb-info" "><span>3234 x 1819</span></div>';
+        infobanner = '';
         for (var j = 0; j < 12; j++) {
             if (linkData[j] === undefined) {
-                html += '<a href="#" style="background-image: url(thumbnails/www.example.com.png);" onClick="overlayMenu(this)"> <div class="thumb-info" style="position: absolute;bottom: 0px;text-align: center; color:red; right:0"> <i class="demo-icon icon-trash-empty">&#xe800;</i> </div> </a>';
+                html += '<a href="#" style="background-image: url(thumbnails/www.example.com.png);" onClick="overlayMenu(this)">' + infobanner + '</a>';
             } else {
-                html += '<a href="' + linkData[j].url + '" style="background-image: url( ' + linkData[j].background + ');"> <div class="thumb-info" style="position: absolute;bottom: 0px;text-align: center; color:red; right:0"><span>3234 x 1819</span></div> </a>';
+                html += '<a href="' + linkData[j].url + '" style="background-image: url( ' + linkData[j].background + ');">' + closeButton + '</a>';
             }
         }
         html += '</div>';
@@ -54,32 +57,6 @@ function loadUrls(json) {
         $('#pages span:nth-child(' + window.location.hash.substring(1) + ')').click();
     }
 }
-
-$(document).ready(function() {
-    if (local != null) loadUrls(local);
-    // Detect file element
-    $("#fileElem").change(function() {
-        // will log a FileList object, view gifs below
-        file = (this.files[0]);
-        //fileName = (this.files[0].name.split('.')[0]);
-        fileName = (this.files[0].name);
-        // Create a storage reference from our storage service
-        ref = storageRef.child('img/' + fileName);
-        readURL(this);
-    });
-
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $('#preview').attr('src', e.target.result);
-                $('#preview').fadeIn(500);
-                $('#upload').fadeIn(500);
-            }
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-});
 
 function uploadFile() {
     var uploadTask = ref.put(file);
@@ -116,14 +93,16 @@ function writeNewUrl(name, url, category, background) {
     });
     console.log(response);
     response.then(() => {
-        alert("todo bien");
-        console.log('Se ha guardado con exitos')
+        alert("Correct Save!!");
+        console.log('Se ha guardado con exito')
     })
     response.catch((err) => {
         console.log('Something went wrong check the error ', err)
     })
 }
-/* Menu overlay show */
+/* 
+Menu overlay show
+*/
 function overlayMenu(object) {
     category = $(object).parent("div").attr('data-category');
     $('.overlay').removeClass('animated fadeOutDown');
@@ -131,3 +110,61 @@ function overlayMenu(object) {
     $('.overlay').show(0);
     $('#category').val(category);
 }
+/*
+    Menu overlay hide
+*/
+function hideOverlayMenu(object) {
+    $('.overlay').removeClass('animated fadeInUp');
+    $('.overlay').addClass('animated fadeOutDown');
+    $('.overlay').delay(2000).hide(0)
+}
+
+$(document).ready(function() {
+    if (local != null) loadUrls(local);
+    // Detect file element
+    $("#fileElem").change(function() {
+        // will log a FileList object, view gifs below
+        file = (this.files[0]);
+        //fileName = (this.files[0].name.split('.')[0]);
+        fileName = (this.files[0].name);
+        // Create a storage reference from our storage service
+        ref = storageRef.child('img/' + fileName);
+        readURL(this);
+    });
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#preview').attr('src', e.target.result);
+                $('#preview').fadeIn(500);
+                $('#upload').fadeIn(500);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+
+
+    /*
+        hover in elemts a urls
+    */    
+    $("a[href='#']" ).hover(function() {
+        //$(this).css(({"background": "none"}));
+        $(this).append('<i class="fas fa-plus plus"></i>' );
+    });
+
+    /*
+        hover in elemts a urls
+    */
+
+    $("a[href='#']" ).mouseleave(function() {
+        
+        //$(this).css(({"background-image": "url(thumbnails/www.example.com.png)"}));
+        $(this).find( ".plus" ).remove();
+        /*hola.addClass('animated fadeOut').one(animationEnd, function(){
+            console.log($(this));
+        });*/
+    });
+
+});
